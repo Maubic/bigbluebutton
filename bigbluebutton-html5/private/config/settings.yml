@@ -267,6 +267,10 @@ public:
       noColors: true
       showControls: true
       rtl: false
+  scola:
+    url: "https://scola-backend.herokuapp.com/api"
+    grading:
+      enabled: true
   layout:
     autoSwapLayout: false
     hidePresentation: false

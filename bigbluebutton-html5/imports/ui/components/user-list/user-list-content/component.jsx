@@ -4,6 +4,7 @@ import { styles } from './styles';
 import UserParticipantsContainer from './user-participants/container';
 import UserMessages from './user-messages/component';
 import UserNotesContainer from './user-notes/container';
+import ScolaModulesContainer from './scola-modules/container';
 import UserCaptionsContainer from './user-captions/container';
 import WaitingUsers from './waiting-users/component';
 import UserPolls from './user-polls/component';
@@ -28,6 +29,7 @@ const defaultProps = {
   compact: false,
 };
 const CHAT_ENABLED = Meteor.settings.public.chat.enabled;
+const GRADING_ENABLED = Meteor.settings.public.scola.grading.enabled;
 const ROLE_MODERATOR = Meteor.settings.public.user.role_moderator;
 
 class UserContent extends PureComponent {
@@ -89,6 +91,7 @@ class UserContent extends PureComponent {
             />
           ) : null
         }
+        { GRADING_ENABLED ? (<ScolaModulesContainer {...{ compact }} />) : null }
         <UserPolls
           isPresenter={currentUser.presenter}
           {...{

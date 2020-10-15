@@ -65,6 +65,8 @@ const currentParameters = [
   // OUTSIDE COMMANDS
   'bbb_outside_toggle_self_voice',
   'bbb_outside_toggle_recording',
+  // SCOLA
+  'scola_class_data',
 ];
 
 function valueParser(val) {
