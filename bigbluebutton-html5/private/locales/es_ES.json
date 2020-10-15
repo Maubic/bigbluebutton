@@ -258,7 +258,7 @@
     "app.endMeeting.noLabel": "No",
     "app.about.title": "Acerca de",
     "app.about.version": "Versión de la interfaz cliente:",
-    "app.about.copyright": "Derechos de autor:",
+    "app.about.copyright": "Sitio web:",
     "app.about.confirmLabel": "OK",
     "app.about.confirmDesc": "OK",
     "app.about.dismissLabel": "Cancelar",
@@ -578,10 +578,10 @@
     "app.whiteboard.toolbar.multiUserOff": "Deshabilitar pizarra multiusuario",
     "app.whiteboard.toolbar.fontSize": "Listado de tamaños de fuente",
     "app.feedback.title": "Ha salido de la conferencia",
-    "app.feedback.subtitle": "Nos encantaría oírle acerca de su experiencia con BigBlueButton (opcional)",
-    "app.feedback.textarea": "¿Cómo podemos hacer BigBlueButton mejor?",
-    "app.feedback.sendFeedback": "Enviar retroalimentación",
-    "app.feedback.sendFeedbackDesc": "Enviar retroalimentación y abandonar la reunión",
+    "app.feedback.subtitle": "Nos encantaría oírle acerca de su experiencia con Scola Rooms (opcional)",
+    "app.feedback.textarea": "¿Cómo podemos hacer Scola Rooms mejor?",
+    "app.feedback.sendFeedback": "Enviar feedback",
+    "app.feedback.sendFeedbackDesc": "Enviar feedback y abandonar la reunión",
     "app.videoDock.webcamFocusLabel": "Enfoque",
     "app.videoDock.webcamFocusDesc": "Enfoque la cámara seleccionada",
     "app.videoDock.webcamUnfocusLabel": "Desenfoque",
@@ -634,7 +634,14 @@
     "app.iOSWarning.label": "Por favor, actualice a iOS 12.2 o mayor",
     "app.legacy.unsupportedBrowser": "Parece que estás usando un navegador que no es compatible. Utilice {0} o {1} para obtener soporte completo.",
     "app.legacy.upgradeBrowser": "Parece que está usando una versión antigua no soportada del navegador. Por favor, actualice su navegador para soporte total.",
-    "app.legacy.criosBrowser": "En iOS, use Safari para obtener soporte completo."
-
+    "app.legacy.criosBrowser": "En iOS, use Safari para obtener soporte completo.",
+    "app.scola.section.title": "Scola",
+    "app.scola.grading.title": "Evaluación",
+    "app.scola.grading.panel.title": "Evaluación",
+    "app.scola.grading.modal.attendance": "Asistencia",
+    "app.scola.grading.modal.mark": "Nota",
+    "app.scola.grading.modal.feedback": "Feedback",
+    "app.scola.grading.modal.dismissLabel": "Cancelar",
+    "app.scola.grading.modal.saveLabel": "Guardar"
 }
 

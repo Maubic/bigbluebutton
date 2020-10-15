@@ -188,7 +188,7 @@
     "app.endMeeting.noLabel": "No",
     "app.about.title": "Acerca de",
     "app.about.version": "Versión del cliente:",
-    "app.about.copyright": "Derechos de autor:",
+    "app.about.copyright": "Sitio web:",
     "app.about.confirmLabel": "OK",
     "app.about.confirmDesc": "OK",
     "app.about.dismissLabel": "Cancelar",
@@ -447,10 +447,10 @@
     "app.whiteboard.toolbar.multiUserOff": "Desactivar modo multiusuario de pizarra",
     "app.whiteboard.toolbar.fontSize": "Lista de tamaño de letras",
     "app.feedback.title": "Haz salido de la conferencia",
-    "app.feedback.subtitle": "Nos encantaría saber cual fué tu experiencia con BigBlueButton (opcional)",
-    "app.feedback.textarea": "¿Como podemos mejorar BigBlueButton?",
-    "app.feedback.sendFeedback": "Enviar retroalimentación",
-    "app.feedback.sendFeedbackDesc": "Enviar retroalimentación y dejar la sesión",
+    "app.feedback.subtitle": "Nos encantaría saber cual fué tu experiencia con Scola Rooms (opcional)",
+    "app.feedback.textarea": "¿Como podemos mejorar Scola Rooms?",
+    "app.feedback.sendFeedback": "Enviar feedback",
+    "app.feedback.sendFeedbackDesc": "Enviar feedback y dejar la sesión",
     "app.videoDock.webcamFocusLabel": "Enfocar",
     "app.videoDock.webcamFocusDesc": "Enfocar la webcam seleccionada",
     "app.videoDock.webcamUnfocusLabel": "Desenfocar",
@@ -480,7 +480,14 @@
     "app.createBreakoutRoom.freeJoin": "Permitir a los usuarios seleccionar el grupo de trabajo a ingresar",
     "app.createBreakoutRoom.leastOneWarnBreakout": "Debes agregar almenos un usuario a cada grupo de trabajo.",
     "app.externalVideo.start": "Compartir un nuevo video",
-    "app.externalVideo.close": "Cerrar"
-
+    "app.externalVideo.close": "Cerrar",
+    "app.scola.section.title": "Scola",
+    "app.scola.grading.title": "Evaluación",
+    "app.scola.grading.panel.title": "Evaluación",
+    "app.scola.grading.modal.attendance": "Asistencia",
+    "app.scola.grading.modal.mark": "Nota",
+    "app.scola.grading.modal.feedback": "Feedback",
+    "app.scola.grading.modal.dismissLabel": "Cancelar",
+    "app.scola.grading.modal.saveLabel": "Guardar"
 }
 
