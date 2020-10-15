@@ -1,0 +1,78 @@
+@import "/imports/ui/stylesheets/variables/_all";
+@import "/imports/ui/components/modal/simple/styles";
+@import "/imports/ui/stylesheets/mixins/focus";
+
+input[type="number"]::-webkit-outer-spin-button, input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
+
+.header {
+  margin: 0;
+  padding: 0;
+  border: none;
+  line-height: 2rem;
+}
+
+.content {
+  margin: 0 var(--border-size) 0 var(--border-size);
+  & > div {
+    margin-right: var(--border-size);
+    margin-left: var(--border-size);
+  }
+}
+
+.footer {
+  margin: 0 var(--border-size) 0 var(--border-size);
+  text-align: right;
+  .button:first-child {
+    margin-right: 1rem;
+  }
+}
+
+.feedback {
+  margin-top: 1rem;
+  label {
+    display: block;
+  }
+
+  .textarea {
+    @include inputFocus(var(--color-blue-light));
+    resize: none;
+    margin: 0 auto 1rem auto;
+    color: var(--color-text);
+    border: 1px solid var(--color-gray-lighter);
+    line-height: 2rem;
+    width: 100%;
+    
+    :global(.animationsEnabled) & {
+      transition: box-shadow .2s;
+    }
+  }
+}
+
+.split {
+  display: inline-block;
+  width: 50%;
+}
+
+.mark {
+  @include inputFocus(var(--color-blue-light));
+  background-color: var(--color-white);
+  color: var(--color-gray);
+  border: 1px solid var(--color-gray-lighter);
+  border-radius: var(--border-radius);
+  width: 3rem;
+  text-align: center;
+  margin-left: 0.5rem;
+}
+
+.attendance {
+  position: relative;
+  top:0.134rem;
+  margin-left: 0.5rem;
+  border: 1px solid var(--color-gray-lighter);
+  [dir="rtl"] & {
+      margin-right: 0;
+      margin-left: 0.5rem;
+  }
+}

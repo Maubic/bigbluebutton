@@ -7,6 +7,7 @@ import NoteContainer from '/imports/ui/components/note/container';
 import PollContainer from '/imports/ui/components/poll/container';
 import CaptionsContainer from '/imports/ui/components/captions/pad/container';
 import WaitingUsersPanel from '/imports/ui/components/waiting-users/container';
+import GradingContainer from '/imports/ui/components/grading/container';
 import { defineMessages, injectIntl } from 'react-intl';
 import Resizable from 're-resizable';
 import { styles } from '/imports/ui/components/app/styles';
@@ -80,6 +81,7 @@ class PanelManager extends PureComponent {
     this.noteKey = _.uniqueId('note-');
     this.captionsKey = _.uniqueId('captions-');
     this.waitingUsers = _.uniqueId('waitingUsers-');
+    this.grading = _.uniqueId('grading-');
 
     this.state = {
       chatWidth: DEFAULT_PANEL_WIDTH,
@@ -404,6 +406,49 @@ class PanelManager extends PureComponent {
     );
   }
 
+  renderGrading() {
+    return (
+      <div className={styles.poll} key={this.grading}>
+        <GradingContainer />
+      </div>
+    );
+  }
+
+  renderGradingResizable() {
+    const { gradingWidth } = this.state;
+    const { isRTL } = this.props;
+
+    const resizableEnableOptions = {
+      top: false,
+      right: !isRTL,
+      bottom: false,
+      left: !!isRTL,
+      topRight: false,
+      bottomRight: false,
+      bottomLeft: false,
+      topLeft: false,
+    };
+
+    return (
+      <Resizable
+        minWidth={POLL_MIN_WIDTH}
+        maxWidth={POLL_MAX_WIDTH}
+        ref={(node) => { this.resizablePoll = node; }}
+        enable={resizableEnableOptions}
+        key={this.grading}
+        size={{ width: gradingWidth }}
+        onResizeStop={(e, direction, ref, d) => {
+          window.dispatchEvent(new Event('resize'));
+          this.setState({
+            gradingWidth: gradingWidth + d.width,
+          });
+        }}
+      >
+        {this.renderGrading()}
+      </Resizable>
+    );
+  }
+
   render() {
     const { enableResize, openPanel } = this.props;
     if (openPanel === '') return null;
@@ -462,6 +507,14 @@ class PanelManager extends PureComponent {
         panels.push(this.renderWaitingUsersPanelResizable());
       } else {
         panels.push(this.renderWaitingUsersPanel());
+      }
+    }
+
+    if (openPanel === 'grading') {
+      if (enableResize) {
+        panels.push(this.renderGradingResizable());
+      } else {
+        panels.push(this.renderGrading());
       }
     }
 
