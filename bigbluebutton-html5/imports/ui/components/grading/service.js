@@ -8,9 +8,16 @@ function getCookie(key, defaultValue) {
 }
 
 async function fetchStudents(centerid, teacherid, classid, token) {
-  const filter = encodeURIComponent(JSON.stringify({ include: ['students', 'studentInfo'] }));
-
-  const response = await fetch(`${SCOLA_BACKEND_URL}/centers/${centerid}/teachers/${teacherid}/classes/${classid}?filter=${filter}`, {
+  const filter = encodeURIComponent(
+    JSON.stringify({ include: ['students', 'studentInfo'] }),
+  );
+  let url;
+  if (teacherid) {
+    url = `${SCOLA_BACKEND_URL}/centers/${centerid}/teachers/${teacherid}/classes/${classid}?filter=${filter}`;
+  } else {
+    url = `${SCOLA_BACKEND_URL}/centers/${centerid}/classes/${classid}?filter=${filter}`;
+  }
+  const response = await fetch(url, {
     method: 'GET',
     headers: { Authorization: token },
   });
@@ -25,9 +32,22 @@ async function fetchStudents(centerid, teacherid, classid, token) {
   });
 }
 
-async function updateStudentInfo(centerid, teacherid, classid, token, studentInfo) {
-  const currentStudentsInfo = await fetchStudents(centerid, teacherid, classid, token);
-  const oldStudentInfoIndex = currentStudentsInfo.findIndex(el => el.id === studentInfo.id);
+async function updateStudentInfo(
+  centerid,
+  teacherid,
+  classid,
+  token,
+  studentInfo,
+) {
+  const currentStudentsInfo = await fetchStudents(
+    centerid,
+    teacherid,
+    classid,
+    token,
+  );
+  const oldStudentInfoIndex = currentStudentsInfo.findIndex(
+    el => el.id === studentInfo.id,
+  );
 
   if (oldStudentInfoIndex > -1) {
     currentStudentsInfo[oldStudentInfoIndex] = {
@@ -38,7 +58,14 @@ async function updateStudentInfo(centerid, teacherid, classid, token, studentInf
     };
   }
 
-  return fetch(`${SCOLA_BACKEND_URL}/centers/${centerid}/teachers/${teacherid}/classes/${classid}`, {
+  let url;
+  if (teacherid) {
+    url = `${SCOLA_BACKEND_URL}/centers/${centerid}/teachers/${teacherid}/classes/${classid}`;
+  } else {
+    url = `${SCOLA_BACKEND_URL}/centers/${centerid}/classes/${classid}`;
+  }
+
+  return fetch(url, {
     method: 'PUT',
     headers: { Authorization: token, 'Content-Type': 'application/json' },
     body: JSON.stringify({
@@ -48,8 +75,4 @@ async function updateStudentInfo(centerid, teacherid, classid, token, studentInf
   });
 }
 
-export {
-  getCookie,
-  fetchStudents,
-  updateStudentInfo,
-};
+export { getCookie, fetchStudents, updateStudentInfo };
