@@ -3,9 +3,10 @@ import Users from '/imports/api/users';
 import Auth from '/imports/ui/services/auth';
 import Logger from '/imports/startup/client/logger';
 
-import { getStreamer } from '/imports/api/external-videos';
+import { getStreamer } from '/imports/api/external-audios';
 import { makeCall } from '/imports/ui/services/api';
-import { stopWatching as stopWatchingAudio } from '/imports/ui/components/external-audio-player/service';
+import { stopWatching as stopWatchingVideo } from '/imports/ui/components/external-video-player/service';
+
 import ReactPlayer from 'react-player';
 
 import Panopto from './custom-players/panopto';
@@ -13,29 +14,29 @@ import Panopto from './custom-players/panopto';
 const isUrlValid = url => ReactPlayer.canPlay(url) || Panopto.canPlay(url);
 
 const startWatching = (url) => {
-  const meeting = Meetings.findOne({ meetingId: Auth.meetingID }, { fields: { externalAudioUrl: 1 } });
-  if (meeting && meeting.externalAudioUrl) {
-    stopWatchingAudio();
+  const meeting = Meetings.findOne({ meetingId: Auth.meetingID }, { fields: { externalVideoUrl: 1 } });
+  if (meeting && meeting.externalVideoUrl) {
+    stopWatchingVideo();
   }
 
-  let externalVideoUrl = url;
+  let externalAudioUrl = url;
 
   if (Panopto.canPlay(url)) {
-    externalVideoUrl = Panopto.getSocialUrl(url);
+    externalAudioUrl = Panopto.getSocialUrl(url);
   }
 
-  makeCall('startWatchingExternalVideo', { externalVideoUrl });
+  makeCall('startWatchingExternalAudio', { externalAudioUrl });
 };
 
 const stopWatching = () => {
-  makeCall('stopWatchingExternalVideo');
+  makeCall('stopWatchingExternalAudio');
 };
 
 const sendMessage = (event, data) => {
   const meetingId = Auth.meetingID;
   const userId = Auth.userID;
 
-  makeCall('emitExternalVideoEvent', event, { ...data, meetingId, userId });
+  makeCall('emitExternalAudioEvent', event, { ...data, meetingId, userId });
 };
 
 const onMessage = (message, func) => {
@@ -48,18 +49,18 @@ const removeAllListeners = (eventType) => {
   streamer.removeAllListeners(eventType);
 };
 
-const getVideoUrl = () => {
+const getAudioUrl = () => {
   const meetingId = Auth.meetingID;
-  const meeting = Meetings.findOne({ meetingId }, { fields: { externalVideoUrl: 1 } });
+  const meeting = Meetings.findOne({ meetingId }, { fields: { externalAudioUrl: 1 } });
 
-  return meeting && meeting.externalVideoUrl;
+  return meeting && meeting.externalAudioUrl;
 };
 
 export {
   sendMessage,
   onMessage,
   removeAllListeners,
-  getVideoUrl,
+  getAudioUrl,
   isUrlValid,
   startWatching,
   stopWatching,

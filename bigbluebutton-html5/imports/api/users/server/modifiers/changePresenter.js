@@ -2,6 +2,7 @@ import Logger from '/imports/startup/server/logger';
 import Users from '/imports/api/users';
 import Meetings from '/imports/api/meetings';
 import stopWatchingExternalVideo from '/imports/api/external-videos/server/methods/stopWatchingExternalVideo';
+import stopWatchingExternalAudio from '/imports/api/external-audios/server/methods/stopWatchingExternalAudio';
 
 export default function changePresenter(presenter, userId, meetingId, changedBy) {
   const selector = {
@@ -20,6 +21,10 @@ export default function changePresenter(presenter, userId, meetingId, changedBy)
     if (meeting && meeting.externalVideoUrl) {
       Logger.info(`ChangePresenter:There is external video being shared. Stopping it due to presenter change, ${meeting.externalVideoUrl}`);
       stopWatchingExternalVideo({ meetingId, requesterUserId: userId });
+    }
+    if (meeting && meeting.externalAudioUrl) {
+      Logger.info(`ChangePresenter:There is external audio being shared. Stopping it due to presenter change, ${meeting.externalAudioUrl}`);
+      stopWatchingExternalAudio({ meetingId, requesterUserId: userId });
     }
 
     const numberAffected = Users.update(selector, modifier);

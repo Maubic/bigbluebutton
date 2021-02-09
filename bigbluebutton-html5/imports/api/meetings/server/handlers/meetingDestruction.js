@@ -2,6 +2,7 @@ import RedisPubSub from '/imports/startup/server/redis';
 import { check } from 'meteor/check';
 
 import destroyExternalVideo from '/imports/api/external-videos/server/methods/destroyExternalVideo';
+import destroyExternalAudio from '/imports/api/external-audios/server/methods/destroyExternalAudio';
 import { removeAnnotationsStreamer } from '/imports/api/annotations/server/streamer';
 import { removeCursorStreamer } from '/imports/api/cursor/server/streamer';
 
@@ -11,6 +12,7 @@ export default function handleMeetingDestruction({ body }) {
   check(meetingId, String);
 
   destroyExternalVideo(meetingId);
+  destroyExternalAudio(meetingId);
   removeAnnotationsStreamer(meetingId);
   removeCursorStreamer(meetingId);
 

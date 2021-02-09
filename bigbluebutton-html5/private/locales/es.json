@@ -688,5 +688,15 @@
     "app.scola.grading.modal.mark": "Nota",
     "app.scola.grading.modal.feedback": "Feedback",
     "app.scola.grading.modal.dismissLabel": "Cancelar",
-    "app.scola.grading.modal.saveLabel": "Guardar"
+    "app.scola.grading.modal.saveLabel": "Guardar",
+    "app.actionsBar.actionsDropdown.shareExternalAudio": "Compartir un audio externo",
+    "app.actionsBar.actionsDropdown.stopShareExternalAudio": "Dejar de compartir audio externo",
+    "app.externalAudio.start": "Compartir un nuevo audio",
+    "app.externalAudio.title": "Compartir un audio externo",
+    "app.externalAudio.input": "URL de audio externo",
+    "app.externalAudio.urlInput": "Añadir URL de audio",
+    "app.externalAudio.urlError": "Esta URL de audio no está soportada",
+    "app.externalAudio.close": "Cerrar",
+    "app.externalAudio.autoPlayWarning": "Reproduzca el audio para activar la sincronización de medios",
+    "app.externalAudio.noteLabel": "Nota: Los audios externos compartidos no aparecerán en la grabación. Se recomienda que se incluyan urls públicas de servicios como Google Drive o Dropbox."
 }

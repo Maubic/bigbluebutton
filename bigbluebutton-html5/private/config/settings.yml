@@ -91,6 +91,8 @@ public:
       - warning
   externalVideoPlayer:
     enabled: true
+  externalAudioPlayer:
+    enabled: true
   networkMonitoring:
     enableNetworkMonitoring: true
     packetLostThreshold: 10
@@ -187,6 +189,8 @@ public:
     enableScreensharing: true
     enableVideo: true
     enableVideoMenu: true
+    enableAudio: true
+    enableAudioMenu: true
     enableListenOnly: true
     autoShareWebcam: false
     skipVideoPreview: false

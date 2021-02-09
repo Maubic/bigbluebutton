@@ -3,6 +3,7 @@ import Users from '/imports/api/users';
 import VideoStreams from '/imports/api/video-streams';
 import Logger from '/imports/startup/server/logger';
 import stopWatchingExternalVideo from '/imports/api/external-videos/server/methods/stopWatchingExternalVideo';
+import stopWatchingExternalAudio from '/imports/api/external-audios/server/methods/stopWatchingExternalAudio';
 import clearUserInfoForRequester from '/imports/api/users-infos/server/modifiers/clearUserInfoForRequester';
 
 const clearAllSessions = (sessionUserId) => {
@@ -22,6 +23,7 @@ export default function removeUser(meetingId, userId) {
     const { presenter } = userToRemove;
     if (presenter) {
       stopWatchingExternalVideo({ meetingId, requesterUserId: userId });
+      stopWatchingExternalAudio({ meetingId, requesterUserId: userId });
     }
   }
 

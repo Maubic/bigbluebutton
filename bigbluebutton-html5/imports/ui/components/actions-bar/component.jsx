@@ -19,6 +19,7 @@ class ActionsBar extends PureComponent {
       amIModerator,
       screenSharingCheck,
       enableVideo,
+      enableAudio,
       isLayoutSwapped,
       toggleSwapLayout,
       handleTakePresenter,
@@ -26,14 +27,17 @@ class ActionsBar extends PureComponent {
       currentSlidHasContent,
       parseCurrentSlideContent,
       isSharingVideo,
+      isSharingAudio,
       screenShareEndAlert,
       stopExternalVideoShare,
+      stopExternalAudioShare,
       screenshareDataSavingSetting,
       isCaptionsAvailable,
       isMeteorConnected,
       isPollingEnabled,
       isThereCurrentPresentation,
       allowExternalVideo,
+      allowExternalAudio,
     } = this.props;
 
     const actionBarClasses = {};
@@ -50,10 +54,13 @@ class ActionsBar extends PureComponent {
             amIModerator,
             isPollingEnabled,
             allowExternalVideo,
+            allowExternalAudio,
             handleTakePresenter,
             intl,
             isSharingVideo,
+            isSharingAudio,
             stopExternalVideoShare,
+            stopExternalAudioShare,
             isMeteorConnected,
           }}
           />

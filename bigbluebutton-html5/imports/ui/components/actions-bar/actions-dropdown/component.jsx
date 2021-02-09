@@ -11,8 +11,9 @@ import DropdownListItem from '/imports/ui/components/dropdown/list/item/componen
 import PresentationUploaderContainer from '/imports/ui/components/presentation/presentation-uploader/container';
 import { withModalMounter } from '/imports/ui/components/modal/service';
 import withShortcutHelper from '/imports/ui/components/shortcut-help/service';
-import { styles } from '../styles';
 import ExternalVideoModal from '/imports/ui/components/external-video-player/modal/container';
+import ExternalAudioModal from '/imports/ui/components/external-audio-player/modal/container';
+import { styles } from '../styles';
 
 const propTypes = {
   amIPresenter: PropTypes.bool.isRequired,
@@ -23,6 +24,8 @@ const propTypes = {
   handleTakePresenter: PropTypes.func.isRequired,
   allowExternalVideo: PropTypes.bool.isRequired,
   stopExternalVideoShare: PropTypes.func.isRequired,
+  allowExternalAudio: PropTypes.bool.isRequired,
+  stopExternalAudioShare: PropTypes.func.isRequired,
 };
 
 const defaultProps = {
@@ -74,6 +77,14 @@ const intlMessages = defineMessages({
     id: 'app.actionsBar.actionsDropdown.stopShareExternalVideo',
     description: 'Stop sharing external video button',
   },
+  startExternalAudioLabel: {
+    id: 'app.actionsBar.actionsDropdown.shareExternalAudio',
+    description: 'Start sharing external audio button',
+  },
+  stopExternalAudioLabel: {
+    id: 'app.actionsBar.actionsDropdown.stopShareExternalAudio',
+    description: 'Stop sharing external audio button',
+  },
 });
 
 class ActionsDropdown extends PureComponent {
@@ -86,6 +97,7 @@ class ActionsDropdown extends PureComponent {
 
     this.handlePresentationClick = this.handlePresentationClick.bind(this);
     this.handleExternalVideoClick = this.handleExternalVideoClick.bind(this);
+    this.handleExternalAudioClick = this.handleExternalAudioClick.bind(this);
   }
 
   componentWillUpdate(nextProps) {
@@ -101,10 +113,13 @@ class ActionsDropdown extends PureComponent {
       intl,
       amIPresenter,
       allowExternalVideo,
+      allowExternalAudio,
       handleTakePresenter,
       isSharingVideo,
+      isSharingAudio,
       isPollingEnabled,
       stopExternalVideoShare,
+      stopExternalAudioShare,
     } = this.props;
 
     const {
@@ -173,12 +188,29 @@ class ActionsDropdown extends PureComponent {
           />
         )
         : null),
+      (amIPresenter && allowExternalAudio
+        ? (
+          <DropdownListItem
+            icon="listen"
+            label={!isSharingAudio ? intl.formatMessage(intlMessages.startExternalAudioLabel)
+              : intl.formatMessage(intlMessages.stopExternalAudioLabel)}
+            description="External Audio"
+            key="external-audio"
+            onClick={isSharingAudio ? stopExternalAudioShare : this.handleExternalAudioClick}
+          />
+        )
+        : null),
     ]);
   }
 
   handleExternalVideoClick() {
     const { mountModal } = this.props;
     mountModal(<ExternalVideoModal />);
+  }
+
+  handleExternalAudioClick() {
+    const { mountModal } = this.props;
+    mountModal(<ExternalAudioModal />);
   }
 
   handlePresentationClick() {

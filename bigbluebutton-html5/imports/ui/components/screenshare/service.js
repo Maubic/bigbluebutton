@@ -5,6 +5,7 @@ import Settings from '/imports/ui/services/settings';
 import logger from '/imports/startup/client/logger';
 import { tryGenerateIceCandidates } from '/imports/utils/safari-webrtc';
 import { stopWatching } from '/imports/ui/components/external-video-player/service';
+import { stopWatching as stopWatchingAudio } from '/imports/ui/components/external-audio-player/service';
 import Meetings from '/imports/api/meetings';
 import Auth from '/imports/ui/services/auth';
 import UserListService from '/imports/ui/components/user-list/service';
@@ -65,8 +66,11 @@ const shareScreen = (onFail) => {
   if (meeting && meeting.externalVideoUrl) {
     stopWatching();
   }
+  if (meeting && meeting.externalAudioUrl) {
+    stopWatchingAudio();
+  }
 
-  BridgeService.getScreenStream().then(stream => {
+  BridgeService.getScreenStream().then((stream) => {
     KurentoBridge.kurentoShareScreen(onFail, stream);
   }).catch(onFail);
 };
