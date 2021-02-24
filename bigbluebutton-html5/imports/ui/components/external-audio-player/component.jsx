@@ -60,6 +60,7 @@ class AudioPlayer extends Component {
           controls: 'controls',
           autoplay: 'autoplay',
           playsinline: 'playsinline',
+          controlsList: 'nodownload',
         },
       },
       dailymotion: {
@@ -432,6 +433,7 @@ class AudioPlayer extends Component {
           : ''
         }
         <ReactPlayer
+          onContextMenu={e => e.preventDefault()}
           className={styles.audioPlayer}
           url={audioUrl}
           config={this.opts}
