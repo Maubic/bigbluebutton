@@ -10,6 +10,7 @@ import ActionsBar from './component';
 import Service from './service';
 import ExternalAudioService from '/imports/ui/components/external-audio-player/service';
 import ExternalVideoService from '/imports/ui/components/external-video-player/service';
+import QuizizzService from '/imports/ui/components/quizizz/service';
 import CaptionsService from '/imports/ui/components/captions/service';
 import {
   shareScreen,
@@ -32,12 +33,14 @@ export default withTracker(() => ({
   amIModerator: Service.amIModerator(),
   stopExternalAudioShare: ExternalAudioService.stopWatching,
   stopExternalVideoShare: ExternalVideoService.stopWatching,
+  stopQuizizzShare: QuizizzService.stopWatching,
   handleShareScreen: onFail => shareScreen(onFail),
   handleUnshareScreen: () => unshareScreen(),
   isVideoBroadcasting: isVideoBroadcasting(),
   screenSharingCheck: getFromUserSettings('bbb_enable_screen_sharing', Meteor.settings.public.kurento.enableScreensharing),
   enableVideo: getFromUserSettings('bbb_enable_video', Meteor.settings.public.kurento.enableVideo),
   enableAudio: getFromUserSettings('bbb_enable_audio', Meteor.settings.public.kurento.enableAudio),
+  enableQuizizz: getFromUserSettings('bbb_enable_audio', Meteor.settings.public.kurento.enableAudio), // SNA: TODO, bbb_enable_quizizz
   isLayoutSwapped: getSwapLayout() && shouldEnableSwapLayout(),
   toggleSwapLayout: MediaService.toggleSwapLayout,
   handleTakePresenter: Service.takePresenterRole,
@@ -45,6 +48,7 @@ export default withTracker(() => ({
   parseCurrentSlideContent: PresentationService.parseCurrentSlideContent,
   isSharingVideo: Service.isSharingVideo(),
   isSharingAudio: Service.isSharingAudio(),
+  isSharingQuizizz: Service.isSharingQuizizz(),
   screenShareEndAlert,
   screenshareDataSavingSetting: dataSavingSetting(),
   isCaptionsAvailable: CaptionsService.isCaptionsAvailable(),
@@ -54,4 +58,5 @@ export default withTracker(() => ({
     { fields: {} }),
   allowExternalVideo: Meteor.settings.public.externalVideoPlayer.enabled,
   allowExternalAudio: Meteor.settings.public.externalAudioPlayer.enabled,
+  allowQuizizz: Meteor.settings.public.quizizzPlayer.enabled,
 }))(injectIntl(ActionsBarContainer));

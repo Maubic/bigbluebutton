@@ -7,12 +7,14 @@ import Dropdown from '/imports/ui/components/dropdown/component';
 import DropdownTrigger from '/imports/ui/components/dropdown/trigger/component';
 import DropdownContent from '/imports/ui/components/dropdown/content/component';
 import DropdownList from '/imports/ui/components/dropdown/list/component';
+import DropdownListSeparator from '/imports/ui/components/dropdown/list/separator/component';
 import DropdownListItem from '/imports/ui/components/dropdown/list/item/component';
 import PresentationUploaderContainer from '/imports/ui/components/presentation/presentation-uploader/container';
 import { withModalMounter } from '/imports/ui/components/modal/service';
 import withShortcutHelper from '/imports/ui/components/shortcut-help/service';
 import ExternalVideoModal from '/imports/ui/components/external-video-player/modal/container';
 import ExternalAudioModal from '/imports/ui/components/external-audio-player/modal/container';
+import QuizizzModal from '/imports/ui/components/quizizz/modal/container';
 import { styles } from '../styles';
 
 const propTypes = {
@@ -26,6 +28,7 @@ const propTypes = {
   stopExternalVideoShare: PropTypes.func.isRequired,
   allowExternalAudio: PropTypes.bool.isRequired,
   stopExternalAudioShare: PropTypes.func.isRequired,
+  stopQuizizzShare: PropTypes.func.isRequired,
 };
 
 const defaultProps = {
@@ -85,6 +88,14 @@ const intlMessages = defineMessages({
     id: 'app.actionsBar.actionsDropdown.stopShareExternalAudio',
     description: 'Stop sharing external audio button',
   },
+  startQuizizzLabel: {
+    id: 'app.actionsBar.actionsDropdown.shareQuizizz',
+    description: 'Start sharing Quizizz button',
+  },
+  stopQuizizzLabel: {
+    id: 'app.actionsBar.actionsDropdown.stopShareQuizizz',
+    description: 'Stop sharing Quizizz button',
+  },
 });
 
 class ActionsDropdown extends PureComponent {
@@ -98,6 +109,7 @@ class ActionsDropdown extends PureComponent {
     this.handlePresentationClick = this.handlePresentationClick.bind(this);
     this.handleExternalVideoClick = this.handleExternalVideoClick.bind(this);
     this.handleExternalAudioClick = this.handleExternalAudioClick.bind(this);
+    this.handleQuizizzClick = this.handleQuizizzClick.bind(this);
   }
 
   componentWillUpdate(nextProps) {
@@ -114,12 +126,15 @@ class ActionsDropdown extends PureComponent {
       amIPresenter,
       allowExternalVideo,
       allowExternalAudio,
+      allowQuizizz,
       handleTakePresenter,
       isSharingVideo,
       isSharingAudio,
+      isSharingQuizizz,
       isPollingEnabled,
       stopExternalVideoShare,
       stopExternalAudioShare,
+      stopQuizizzShare,
     } = this.props;
 
     const {
@@ -200,6 +215,23 @@ class ActionsDropdown extends PureComponent {
           />
         )
         : null),
+      (amIPresenter && allowQuizizz
+        ? (
+          <DropdownListSeparator key="sep" />
+        )
+        : null),
+      (amIPresenter && allowQuizizz
+        ? (
+          <DropdownListItem
+            icon="rooms"
+            label={!isSharingQuizizz ? intl.formatMessage(intlMessages.startQuizizzLabel)
+              : intl.formatMessage(intlMessages.stopQuizizzLabel)}
+            description="Quizizz"
+            key="quizizz"
+            onClick={isSharingQuizizz ? stopQuizizzShare : this.handleQuizizzClick}
+          />
+        )
+        : null),
     ]);
   }
 
@@ -211,6 +243,11 @@ class ActionsDropdown extends PureComponent {
   handleExternalAudioClick() {
     const { mountModal } = this.props;
     mountModal(<ExternalAudioModal />);
+  }
+
+  handleQuizizzClick() {
+    const { mountModal } = this.props;
+    mountModal(<QuizizzModal />);
   }
 
   handlePresentationClick() {

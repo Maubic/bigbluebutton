@@ -1,4 +1,13 @@
 {
+    "app.quizizz.start": "Start",
+    "app.quizizz.title": "Start a Quizizz",
+    "app.quizizz.input": "Quizizz URL",
+    "app.quizizz.urlInput": "Type here the share url for Quizizz",
+    "app.quizizz.urlError": "This URL isn't supported",
+    "app.quizizz.close": "Close",
+    "app.quizizz.noteLabel": "Note: Quizizz contests will not appear in the recording. Please use the public share link for your Quiz",
+    "app.actionsBar.actionsDropdown.shareQuizizz": "Start Quizizz",
+    "app.actionsBar.actionsDropdown.stopShareQuizizz": "Close Quizizz",
     "app.home.greeting": "Your presentation will begin shortly ...",
     "app.chat.submitLabel": "Send message",
     "app.chat.errorMaxMessageLength": "The message is {0} characters(s) too long",

@@ -2,6 +2,7 @@ import Presentations from '/imports/api/presentations';
 import { isVideoBroadcasting } from '/imports/ui/components/screenshare/service';
 import { getVideoUrl } from '/imports/ui/components/external-video-player/service';
 import { getAudioUrl } from '/imports/ui/components/external-audio-player/service';
+import { getQuizizzUrl } from '/imports/ui/components/quizizz/service';
 import Auth from '/imports/ui/services/auth';
 import Users from '/imports/api/users';
 import Settings from '/imports/ui/services/settings';
@@ -44,6 +45,12 @@ function shouldShowExternalAudio() {
   return enableExternalAudio && getAudioUrl();
 }
 
+function shouldShowQuizizz() {
+  const { enabled: enableQuizizz } = Meteor.settings.public.quizizzPlayer;
+  return enableQuizizz && getQuizizzUrl();
+}
+
+
 function shouldShowOverlay() {
   return getFromUserSettings('bbb_enable_video', KURENTO_CONFIG.enableVideo);
 }
@@ -63,7 +70,7 @@ const toggleSwapLayout = () => {
   swapLayout.tracker.changed();
 };
 
-export const shouldEnableSwapLayout = () => !shouldShowScreenshare() && (!shouldShowExternalVideo() || !shouldShowExternalAudio);
+export const shouldEnableSwapLayout = () => !shouldShowScreenshare() && (!shouldShowExternalVideo() || !shouldShowExternalAudio || !shouldShowQuizizz);
 
 export const getSwapLayout = () => {
   swapLayout.tracker.depend();
@@ -76,6 +83,7 @@ export default {
   shouldShowScreenshare,
   shouldShowExternalVideo,
   shouldShowExternalAudio,
+  shouldShowQuizizz,
   shouldShowOverlay,
   isUserPresenter,
   isVideoBroadcasting,

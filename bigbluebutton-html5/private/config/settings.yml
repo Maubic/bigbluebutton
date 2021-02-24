@@ -93,6 +93,8 @@ public:
     enabled: true
   externalAudioPlayer:
     enabled: true
+  quizizzPlayer:
+    enabled: true    
   networkMonitoring:
     enableNetworkMonitoring: true
     packetLostThreshold: 10
@@ -191,6 +193,8 @@ public:
     enableVideoMenu: true
     enableAudio: true
     enableAudioMenu: true
+    enableQuizizz: true
+    enableQuizizzMenu: true    
     enableListenOnly: true
     autoShareWebcam: false
     skipVideoPreview: false
