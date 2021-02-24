@@ -1,4 +1,13 @@
 {
+    "app.quizizz.start": "¡Comenzar!",
+    "app.quizizz.title": "Iniciar un Quizizz",
+    "app.quizizz.input": "URL del Quizizz",
+    "app.quizizz.urlInput": "Escriba aquí la URL que obtendrá al pulsar 'Share' en su Quizizz",
+    "app.quizizz.urlError": "Esta no es una dirección Quizizz válida",
+    "app.quizizz.close": "Cerrar",
+    "app.quizizz.noteLabel": "Nota: Las sesiones de Quizizz no aparecerán en la grabación. Por favor, utilice la URL que obtendrá al pulsar 'Share' en el Quiz deseado.",
+    "app.actionsBar.actionsDropdown.shareQuizizz": "Iniciar Quizizz",
+    "app.actionsBar.actionsDropdown.stopShareQuizizz": "Terminar Quizizz",
     "app.home.greeting": "Tu presentación dara inicio en un momento...",
     "app.chat.submitLabel": "Enviar mensaje",
     "app.chat.errorMaxMessageLength": "El mensaje es {0} caracteres mas largo de lo esperado",

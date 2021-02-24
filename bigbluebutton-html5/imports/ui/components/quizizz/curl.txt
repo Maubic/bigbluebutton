@@ -1,0 +1,17 @@
+curl 'https://quizizz.com/api/main/game' \
+  -H 'authority: quizizz.com' \
+  -H 'sec-ch-ua: "Chromium";v="88", "Google Chrome";v="88", ";Not A Brand";v="99"' \
+  -H 'accept: application/json, text/javascript, */*; q=0.01' \
+  -H 'x-csrf-token: 2pcox3Gm-MVCaVqzIr8kBt3jIkcl_veEFZw0' \
+  -H 'x-requested-with: XMLHttpRequest' \
+  -H 'sec-ch-ua-mobile: ?0' \
+  -H 'user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/88.0.4324.150 Safari/537.36' \
+  -H 'content-type: application/json' \
+  -H 'origin: https://quizizz.com' \
+  -H 'sec-fetch-site: same-origin' \
+  -H 'sec-fetch-mode: cors' \
+  -H 'sec-fetch-dest: empty' \
+  -H 'referer: https://quizizz.com/admin/quiz/tp/5dacb4db88d603001a6fffcc' \
+  -H 'accept-language: es' \
+  --data-raw '{"quizId":"5dacb4db88d603001a6fffcc","type":"tp","expiry":7200,"locale":"es","gameOptions":{"memeset":"5c65cf51a7d584001a2630dd","studentLeaderboard":true,"timer":true,"timer_3":"classic","jumble":true,"jumbleAnswers":false,"memes":true,"showAnswers_2":"always","studentQuizReview_2":"yes","showAnswers":true,"studentQuizReview":true,"studentMusic":true,"redemption":"yes","powerups":"yes","nicknameGenerator":false,"loginRequired":false,"questionsPerAttempt":0},"memeSet":"5c65cf51a7d584001a2630dd","groupIds":[],"title":null,"description":null,"assignedTo":[],"brandingOptions":null}' \
+  --compressed
