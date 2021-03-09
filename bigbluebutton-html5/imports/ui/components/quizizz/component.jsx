@@ -98,14 +98,14 @@ class QuizizzPlayer extends Component {
       <div
         id="quizizz"
         data-test="quizizzPlayer"
-        style={{ width: '90%' }}
+        style={{ width: '90%', height: '100%' }}
         ref={(ref) => { this.playerParent = ref; }}
       >
         <Iframe
           className={styles.audioPlayer}
           url={quizizzUrl}
           width="100%"
-          height="700px"
+          height="100%"
           display="initial"
           position="relative"
         />
